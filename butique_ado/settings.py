@@ -16,6 +16,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-c@9-n4l7j6ujj&@3kp*i^^tlwq&@ng)ekg10@my8o_xvpmj#@s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-codeanywhere-templates-p-ghqtnds6ei.us2.codeanyapp.com', '*', '*']
 
 
 # Application definition
@@ -44,6 +45,8 @@ INSTALLED_APPS = [
     'home',
     'products',
     'bag',
+    'checkout',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +59,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'boutique_ado.urls'
+ROOT_URLCONF = 'butique_ado.urls'
+
+CRISPY_TEMPLATE_PACK: 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -73,7 +78,12 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'bag.contexts.bag_contents',
+                'django.template.context_processors.media',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -100,7 +110,7 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
-WSGI_APPLICATION = 'boutique_ado.wsgi.application'
+WSGI_APPLICATION = 'butique_ado.wsgi.application'
 
 
 # Database
@@ -158,3 +168,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
